@@ -47,7 +47,7 @@ const Footer = () => {
     
     <FooterWrapper>
       <GlobalStyle />
-        <Logo><Text>Todos los derechos reservados por     </Text>
+        <Logo><Text>Todos los derechos reservados por:    </Text>
         <img src="/logo-rodelec.png" alt="logo" /><Span>RODELEC</Span>
       </Logo>
     </FooterWrapper>
