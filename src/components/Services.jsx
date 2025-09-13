@@ -20,6 +20,7 @@ const servicesData = [
       Nos desplazamos hasta tu localidad y realizamos un análisis del inconveniente. 
       Determinamos la mejor solución. Y con la aprobación del presupuesto, procedemos con la reparación. Finalizamos con un ajuste y limpieza del equipo para garantizar un funcionamiento óptimo`,
         image: "/services1.jpg",
+        link: `https://wa.me/2291512866?text=%20Necesito%20sus%20servicios%20de%20urgencia!%20`,
     },
     {
         id: 2,
@@ -27,6 +28,7 @@ const servicesData = [
         title: "TRABAJOS COMUNES",
         description: "Trifásicas, armado de tableros, reemplazo cableado, fallas/cortocircuitos, colocación de pilares de obra, falta de Potencia y fallas eléctricas.",
         image: "/services1.jpg",
+        link: `https://wa.me/2291512866?text=%20Me%20interesa%20uno%20de%20sus%20servicios%20comunes`,
     },
 
     {
@@ -36,6 +38,7 @@ const servicesData = [
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         image: "/services1.jpg",
+        link: `https://wa.me/2291512866?text=%20Lore%20Ipsum`,
     },
 ];
 
@@ -79,7 +82,13 @@ const Services = () => {
                 <Category>{servicesData[current].category}</Category>
                 <Title>{servicesData[current].title}</Title>
                 <Desc>{servicesData[current].description}</Desc>
-                <Button>Conozca más</Button>
+                <Anchor
+                    href={servicesData[current].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button>Conozca más</Button>
+                </Anchor>
                 <Image src={servicesData[current].image} alt={servicesData[current].title} />
 
             </Content>
@@ -178,6 +187,10 @@ const Desc = styled.p`
   font-size: 0.9rem;
   color: #ccc;
   margin-bottom: 1.5rem;
+`;
+
+const Anchor = styled.a`
+
 `;
 
 const Button = styled.button`
