@@ -68,7 +68,8 @@ const Text = styled.p`
 
 const Button = styled.button`
   position: absolute;
-
+  top: 50%;
+  left: 2rem;
   background-color: #f2c2001c;
   border: solid 4px #f2c300;
   color: #fff;
@@ -78,7 +79,7 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-  z-index: 3;
+  z-index: 4;
 
   &:hover {
     background-color: #f2c300;
@@ -216,18 +217,18 @@ const Carousel = () => {
   return (
     <CarouselWrapper bg={slides[current].image}>
       <Overlay2 />
+
       <Content>
         <Title dangerouslySetInnerHTML={{ __html: slides[current].title }} />
         <Text>{slides[current].text}</Text>
-        <a href="https://wa.me/2291512866?text=%20Estoy%20interesado%20en%20un%20presupuesto%20electrico" target="_blank" rel="noopener noreferrer">
-
-        </a>
-        <Button>Solicitá tu presupuesto</Button>
       </Content>
+
+      <a href="https://wa.me/2291512866?text=%20Estoy%20interesado%20en%20un%20presupuesto%20electrico" target="_blank" rel="noopener noreferrer">
+        <Button>Solicitá tu presupuesto</Button>
+      </a>
 
       <PrevButton onClick={prevSlide} aria-label="Anterior"></PrevButton>
       <NextButton onClick={nextSlide} aria-label="Siguiente"></NextButton>
-
 
       <NavContainer>
         {slides.map((_, index) => (
@@ -240,6 +241,7 @@ const Carousel = () => {
           </SlideButton>
         ))}
       </NavContainer>
+      
     </CarouselWrapper>
   );
 };
