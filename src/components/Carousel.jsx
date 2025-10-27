@@ -7,19 +7,20 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Oswald', sans-serif;
+
+    
   }
 `;
-
-//Carousel
 
 const CarouselWrapper = styled.section`
   position: relative;
   width: 100%;
-  height: 70vh;
+  height: 60vh;
   background: url(${props => props.bg}) center/cover no-repeat;
   display: flex;
   color: #fff;
   transition: background 0.5s ease-in-out;
+  
 `;
 
 const Overlay = styled.div`
@@ -68,7 +69,7 @@ const Text = styled.p`
 
 const Button = styled.button`
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 2rem;
   background-color: #f2c2001c;
   border: solid 4px #f2c300;
@@ -161,41 +162,55 @@ const Carousel = () => {
   const slides = [
     {
       image: "/carousel-tablero1.jpg",
-      title: "Diseño y análisis de <span>sistemas</span> eléctricos",
-      text: "Dimensionamiento de conductores, selección de protecciones, cálculos de cortocircuito.",
+      title: "Diseño de sistemas <span>eléctricos</span> de potencia",
+      text: "Realizamos el diseño integral de redes de media y baja tensión, considerando capacidad de carga, caída de tensión, eficiencia energética y cumplimiento normativo.",
       anchor: "",
     },
     {
       image: "/carousel-tablero2.jpg",
-      title: "Estudios de <span>potencia</span> y coordinación",
-      text: "Coordinación de protecciones y estudios de potencia para garantizar eficiencia y seguridad.",
+      title: "Diseño y coordinación de <span>protecciones</span>",
+      text: "Desarrollamos esquemas de protección selectivos que aseguran la continuidad del servicio y evitan disparos innecesarios ante fallas en el sistema eléctrico.",
       anchor: "",
     },
     {
       image: "/carousel-tablero3.jpg",
-      title: "Protecciones y <span>seguridad</span>",
-      text: "Implementación de protecciones eléctricas según normas nacionales e internacionales.",
-      anchor: "",
-    },
-    {
-      image: "/carousel-tablero4.jpg",
-      title: "Automatización de <span>procesos</span>",
-      text: "Diseño de sistemas automatizados y control de instalaciones eléctricas.",
+      title: "Sistemas de <span>seguridad</span> eléctrica",
+      text: "Aplicamos medidas de protección contra contactos directos e indirectos, fallas a tierra y sobrecorrientes, conforme a reglamentos AEA y normas IEC.",
       anchor: "",
     },
     {
       image: "/carousel-tablero5.jpg",
-      title: "Monitoreo y <span>diagnóstico</span>",
-      text: "Supervisión de sistemas eléctricos y análisis de posibles fallas.",
+      title: "Monitoreo y <span>diagnóstico</span> de instalaciones de potencia",
+      text: "Implementamos sistemas de supervisión en tiempo real y análisis de calidad de energía para detectar anomalías y prevenir fallas en la instalación.",
       anchor: "",
     },
     {
       image: "/carousel-tablero6.jpg",
       title: "Asesoramiento <span>personalizado</span>",
-      text: "Soluciones adaptadas a cada cliente, desde proyectos residenciales hasta industriales.",
+      text: "Ofrecemos acompañamiento técnico integral en cada etapa del proyecto, adaptando las soluciones a las necesidades específicas de cada cliente.",
       anchor: "",
-    }
+    },
+    {
+      image: "/carousel-tablero4.jpg",
+      title: "Diseño de sistemas de potencia para tarifas <span>T1</span>, <span>T2</span> y <span>T3</span>",
+      text: "Diseñamos instalaciones eléctricas optimizadas para cada nivel tarifario, priorizando la eficiencia energética y el cumplimiento con los requerimientos de distribuidoras.",
+      anchor: "",
+    },
+    // Ejemplos adicionales:
+    // {
+    //   image: "/carousel-tablero6.jpg",
+    //   title: "Medición de parámetros de sistemas eléctricos",
+    //   text: "Realizamos mediciones de tensión, corriente, armónicos y factor de potencia para evaluar el desempeño del sistema.",
+    //   anchor: "",
+    // },
+    // {
+    //   image: "/carousel-tablero6.jpg",
+    //   title: "Medición según resolución 900/15 SRT",
+    //   text: "Efectuamos mediciones y verificaciones conforme a la Resolución 900/15 de la SRT para garantizar condiciones seguras de trabajo eléctrico.",
+    //   anchor: "",
+    // },
   ];
+
 
   const [current, setCurrent] = useState(0);
 
@@ -215,6 +230,7 @@ const Carousel = () => {
   };
 
   return (
+    // <Padder>
     <CarouselWrapper bg={slides[current].image}>
       <Overlay2 />
 
@@ -223,8 +239,8 @@ const Carousel = () => {
         <Text>{slides[current].text}</Text>
       </Content>
 
-      <a href="https://wa.me/2291512866?text=%20Estoy%20interesado%20en%20un%20presupuesto%20electrico" target="_blank" rel="noopener noreferrer">
-        <Button>Solicitá tu presupuesto</Button>
+      <a href="https://wa.me/2235111081?text=%20Estoy%20interesado%20en%20sus%20servicios" target="_blank" rel="noopener noreferrer">
+        <Button>Solicitá atención</Button>
       </a>
 
       <PrevButton onClick={prevSlide} aria-label="Anterior"></PrevButton>
@@ -243,6 +259,7 @@ const Carousel = () => {
       </NavContainer>
       
     </CarouselWrapper>
+    // </Padder>
   );
 };
 

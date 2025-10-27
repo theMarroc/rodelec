@@ -12,43 +12,51 @@ const GlobalStyle = createGlobalStyle`
 
 const FooterWrapper = styled.header`
   background-color: #0b0c1a;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 `;
 
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fff;
   font-weight: bold;
-  gap: 15px;
-
-  img {
-    height: 40px;
-    margin-right: 10px;
-  }
+  justify-content: center;
+  gap: 0.5rem;
 `;
 
 const Text = styled.p`
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin: 0;
 `;
 
 const Span = styled.span`
-    color: #4420c5;
+  display: flex;
+  align-items: center; 
+  color: #4420c5;
+  gap: 0.3rem;
 
+  img {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+  }
 `;
 
 const Footer = () => {
   return (
-    
     <FooterWrapper>
       <GlobalStyle />
-        <Logo><Text>Todos los derechos reservados por:    </Text>
-        <img src="/logo-rodelec.png" alt="logo" /><Span>RODELEC</Span>
+      <Logo>
+        {/* <Text>Derechos reservados:</Text> */}
+        <Span>
+          R<img src="/logo-rodelec.png" alt="logo" />O D E L E C
+        </Span>
       </Logo>
     </FooterWrapper>
   );

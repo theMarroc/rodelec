@@ -43,7 +43,7 @@ const Logo = styled.div`
 
   img {
     height: 40px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
 `;
 
@@ -113,6 +113,14 @@ const Hamburger = styled.div`
     display: flex;
   }
 `;
+const SubHeader = styled.p`
+  position: absolute;
+  top: 52%;
+  left: 2rem;
+  font-size: small;
+  color: grey;
+
+`
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -121,9 +129,10 @@ const Header = () => {
     <HeaderWrapper>
       <GlobalStyle />
       <Logo>
-        <img src="/logo-rodelec.png" alt="logo" />
-        RODELEC
+        R<img src="/logo-rodelec-alt.png" alt="logo" />D E L E C
       </Logo>
+
+      <SubHeader>Luis Rodriguez Mat. T-44676 - CTPBA</SubHeader>
 
       <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
         <span style={{ transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }}></span>
@@ -132,31 +141,32 @@ const Header = () => {
       </Hamburger>
 
       <Nav open={menuOpen}>
-  <ul>
-    <li>
-      <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-    </li>
-    <li>
-      <Link to="/services" onClick={() => setMenuOpen(false)}>Servicios</Link>
-    </li>
-    <li>
-      <Link to="/projects" onClick={() => setMenuOpen(false)}>Proyectos</Link>
-    </li>
-    <li>
-      <Link to="/associates" onClick={() => setMenuOpen(false)}>Asociados</Link>
-    </li>
-    <li>
-      <a
-        href="https://wa.me/2291512866?text=%20Estoy%20interesado%20en%20un%20presupuesto%20eléctrico"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => setMenuOpen(false)}
-      >
-        Contacto
-      </a>
-    </li>
-  </ul>
-</Nav>
+        <ul>
+          <li>
+            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          </li>
+          <li>
+            <Link to="/services" onClick={() => setMenuOpen(false)}>Servicios</Link>
+          </li>
+          {/* <li>
+            <Link to="/projects" onClick={() => setMenuOpen(false)}>Proyectos</Link>
+          </li> */}
+          {/* <li>
+            <Link to="/associates" onClick={() => setMenuOpen(false)}>Asociados</Link>
+          </li> */}
+          <li>
+            <a
+              href="https://wa.me/2235111081?text=%20Estoy%20interesado%20en%20los%20servicios%20de%20RODELEC"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              Whatsapp
+            </a>
+            
+          </li>
+        </ul>
+      </Nav>
 
     </HeaderWrapper>
   );
