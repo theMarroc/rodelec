@@ -142,7 +142,7 @@ const FooterForm = () => {
 
             <SubmitButton type="submit" disabled={isSending}>
               <ButtonText>{isSending ? 'Enviando...' : 'Enviar Información'}</ButtonText>
-              {!isSending && <ButtonIcon>➔</ButtonIcon>}
+              {!isSending && <ButtonIcon>➜</ButtonIcon>}
             </SubmitButton>
 
             {statusMessage && <StatusMessage>{statusMessage}</StatusMessage>}
@@ -203,18 +203,18 @@ const backgroundAnimation = keyframes`
   to { transform: rotate(360deg) scale(1.05); }
 `;
 
-export const FooterContainer = styled.footer`
+const FooterContainer = styled.footer`
   position: relative;
   background-color: ${COLORS.primaryBg};
   color: ${COLORS.text};
   padding: 0 0 20px 0;
-  overflow-x: hidden; /* para scroll horizontal */
-  overflow-y: visible; /* permitir altura natural */
+  overflow-x: hidden; 
+  overflow-y: hidden;
 `;
 
 
 
-export const BackgroundOverlay = styled.div`
+const BackgroundOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -227,10 +227,11 @@ export const BackgroundOverlay = styled.div`
   background-repeat: repeat;
   animation: ${backgroundAnimation} 60s linear infinite;
   z-index: 0;
+  overflow: hidden;
 `;
 
 
-export const ContentWrapper = styled.div`
+const ContentWrapper = styled.div`
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
@@ -248,14 +249,17 @@ export const ContentWrapper = styled.div`
   @media (max-width: 576px) {
     padding: 0 15px;
   }
+  @media (min-width: 768px) {
+    padding: 5rem 10rem;
+  }
 `;
 
 
-export const ContactSection = styled.div`
+const ContactSection = styled.div`
   flex: 3;
 `;
 
-export const SalesSection = styled.div`
+const SalesSection = styled.div`
   flex: 2;
   padding-left: 40px;
   border-left: 1px solid ${COLORS.secondaryBg};
@@ -268,18 +272,19 @@ export const SalesSection = styled.div`
   }
 `;
 
-export const Title = styled.h2`
+const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 5px;
   color: ${COLORS.text};
+  border-bottom: 1px solid grey;
 
   @media (max-width: 576px) {
     font-size: 2rem;
   }
 `;
 
-export const Subtitle = styled.p`
+const Subtitle = styled.p`
   font-size: 1rem;
   color: ${COLORS.label};
   margin-bottom: 25px;
@@ -289,7 +294,7 @@ export const Subtitle = styled.p`
   }
 `;
 
-export const Form = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -300,7 +305,7 @@ export const Form = styled.form`
   }
 `;
 
-export const FormRow = styled.div`
+const FormRow = styled.div`
   display: flex;
   gap: 20px;
 
@@ -310,7 +315,7 @@ export const FormRow = styled.div`
   }
 `;
 
-export const FormControl = styled.div`
+const FormControl = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -327,7 +332,7 @@ export const FormControl = styled.div`
   }
 `;
 
-export const Label = styled.label`
+const Label = styled.label`
   font-size: 0.9rem;
   font-weight: 400;
   color: ${COLORS.text};
@@ -359,7 +364,7 @@ const BaseInputStyles = css`
   }
 `;
 
-export const Input = styled.input`
+const Input = styled.input`
   ${BaseInputStyles}
   box-sizing: border-box; /* importante para que padding no aumente ancho */
 
@@ -370,7 +375,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Select = styled.select`
+const Select = styled.select`
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
@@ -388,7 +393,7 @@ export const Select = styled.select`
   }
 `;
 
-export const Textarea = styled.textarea`
+const Textarea = styled.textarea`
   ${BaseInputStyles}
   box-sizing: border-box;
 
@@ -399,7 +404,7 @@ export const Textarea = styled.textarea`
   }
 `;
 
-export const SubmitButton = styled.button`
+const SubmitButton = styled.button`
   align-self: flex-start;
   display: flex;
   align-items: center;
@@ -408,7 +413,7 @@ export const SubmitButton = styled.button`
   background-color: ${COLORS.buttonBg};
   color: ${COLORS.primaryBg};
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -425,7 +430,9 @@ export const SubmitButton = styled.button`
   }
 `;
 
-export const ButtonText = styled.span`
+
+
+const ButtonText = styled.span`
   margin-right: 10px;
 
   @media (max-width: 576px) {
@@ -433,7 +440,7 @@ export const ButtonText = styled.span`
   }
 `;
 
-export const ButtonIcon = styled.span`
+const ButtonIcon = styled.span`
   font-size: 1.2rem;
   line-height: 1;
 
@@ -442,13 +449,13 @@ export const ButtonIcon = styled.span`
   }
 `;
 
-export const StatusMessage = styled.p`
+const StatusMessage = styled.p`
   margin-top: 10px;
   font-size: 0.95rem;
   color: ${COLORS.text};
 `;
 
-export const ContactInfoTitle = styled.h3`
+const ContactInfoTitle = styled.h3`
   font-size: 0.9rem;
   font-weight: 700;
   color: ${COLORS.label};
@@ -457,7 +464,7 @@ export const ContactInfoTitle = styled.h3`
   text-transform: uppercase;
 `;
 
-export const ContactInfoItem = styled.div`
+const ContactInfoItem = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -468,19 +475,19 @@ export const ContactInfoItem = styled.div`
   }
 `;
 
-export const ContactInfoText = styled.p`
+const ContactInfoText = styled.p`
   font-size: 1rem;
   color: ${COLORS.text};
   margin: 0;
 `;
 
-export const SocialIcons = styled.div`
+const SocialIcons = styled.div`
   display: flex;
   gap: 15px;
   margin-top: 10px;
 `;
 
-export const SocialIconLink = styled.a`
+const SocialIconLink = styled.a`
   color: ${COLORS.text};
   width: 35px;
   height: 35px;

@@ -140,9 +140,14 @@ const Wrapper = styled.section`
   color: #fff;
   padding: 0rem 2rem 2rem 2rem;
   margin: auto;
+  font-size: 0.9em; /* tamaño base para móvil */
 
-    @media (min-width: 768px) {
+  margin-top: -90px; /* Para que el Header esté sobre el Carousel */
+  padding-top: 90px; 
+
+  @media (min-width: 768px) {
     padding: 5rem 10rem;
+    font-size: 24px; /* tamaño base para desktop */
   }
 `;
 
@@ -150,8 +155,9 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.5em; /* relativo a Wrapper */
     font-weight: bolder;
   }
 `;
@@ -166,7 +172,7 @@ const Arrow = styled.button`
   border: 1px solid #f2c300;
   color: #f2c300;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1em;
   padding: 5px 10px;
   border-radius: 50%;
   cursor: pointer;
@@ -184,12 +190,15 @@ const Arrow = styled.button`
 const Progress = styled.div`
   display: flex;
   gap: 1rem;
+  @media (min-width: 768px) {
+    padding: 0 0 3rem 0;
+  }
 `;
 
 const Step = styled.div`
   flex: ${(props) => (props.active ? 3 : 1)};
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1em; /* relativo a Wrapper */
   position: relative;
   color: ${(props) => (props.active ? "#f2c300" : "#aaa")};
   display: flex;
@@ -223,26 +232,43 @@ const Content = styled.div`
   }
 `;
 const TextWrapper = styled.div`
-  flex: 1; /* ocupa el espacio disponible para el texto */
+  width: 100%;
+  flex: none;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
+
+const Image = styled.img`
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+
+  @media (min-width: 768px) {
+    width: 50%;
+    height: auto;
+  }
+`;
+
 
 const Category = styled.p`
   color: #aaa;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.8em; /* relativo a Wrapper */
+  margin-bottom: 0.5em;
 `;
 
 const Title = styled.h2`
-  font-size: 1.3rem;
+  font-size: 1.3em; /* relativo a Wrapper */
   color: #fff;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.8em;
 `;
 
 const Desc = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.9em; /* relativo a Wrapper */
   color: #ccc;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5em;
 `;
 
 const Anchor = styled.a`
@@ -254,12 +280,13 @@ const Button = styled.button`
   border: 2px solid #f2c300;
   color: #fff;
   padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   border-radius: 25px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  font-weight: bold;
 
   &::after {
     content: "➜";
@@ -284,14 +311,3 @@ const Button = styled.button`
   }
 `;
 
-
-const Image = styled.img`
-  width: 100%;
-  max-width: 400px; /* limita el tamaño de la imagen en desktop */
-  border-radius: 8px;
-  object-fit: cover;
-
-  @media (min-width: 768px) {
-    width: 50%; /* ocupa la mitad del contenedor */
-  }
-`;
