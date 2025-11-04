@@ -26,9 +26,9 @@ const Header = ({ isDark, toggleTheme }) => {
 
       <SubHeader>Luis Rodriguez Mat T-44676-CTPBA</SubHeader>
 
-   {/*<ThemeButton onClick={toggleTheme}>
+   <ThemeButton onClick={toggleTheme}>
         {isDark ? <FaLightbulb size={20} /> : <FaRegLightbulb size={20} />}
-      </ThemeButton> */}
+      </ThemeButton>
 
       <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
         <span style={{ transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }}></span>
