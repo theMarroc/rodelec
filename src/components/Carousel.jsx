@@ -15,31 +15,31 @@ const Carousel = () => {
     {
       image: "/carousel-tablero2.jpg",
       title: "Diseño y coordinación de <span>protecciones</span>",
-      text: "Desarrollamos esquemas de protección selectivos que aseguran la continuidad del servicio y evitan disparos innecesarios ante fallas en el sistema eléctrico.",
+      text: "Desarrollamos esquemas de protección selectivos que aseguran la <span>continuidad del servicio</span> y evitan disparos innecesarios ante fallas en el sistema eléctrico.",
       anchor: "",
     },
     {
       image: "/carousel-tablero3.jpg",
       title: "Sistemas de <span>seguridad</span> eléctrica",
-      text: "Aplicamos medidas de protección contra contactos directos e indirectos, fallas a tierra y sobrecorrientes, conforme a reglamentos AEA y normas IEC.",
+      text: "Aplicamos medidas de protección contra contactos directos e indirectos, fallas a tierra y sobrecorrientes, conforme a <span>reglamentos AEA y normas IEC</span>.",
       anchor: "",
     },
     {
       image: "/carousel-tablero5.jpg",
       title: "Monitoreo y <span>diagnóstico</span> de instalaciones de potencia",
-      text: "Implementamos sistemas de supervisión en tiempo real y análisis de calidad de energía para detectar anomalías y prevenir fallas en la instalación.",
+      text: "Implementamos sistemas de supervisión en tiempo real y análisis de calidad de energía para detectar anomalías y <span>prevenir fallas</span> en la instalación.",
       anchor: "",
     },
     {
       image: "/carousel-tablero6.jpg",
       title: "Asesoramiento <span>personalizado</span>",
-      text: "Ofrecemos acompañamiento técnico integral en cada etapa del proyecto, adaptando las soluciones a las necesidades específicas de cada cliente.",
+      text: "Ofrecemos acompañamiento <span>técnico integral</span> en cada etapa del proyecto, adaptando las soluciones a las necesidades específicas de cada cliente.",
       anchor: "",
     },
     {
       image: "/carousel-tablero4.jpg",
       title: "Diseño de sistemas de potencia para tarifas <span>T1</span>, <span>T2</span> y <span>T3</span>",
-      text: "Diseñamos instalaciones eléctricas optimizadas para cada nivel tarifario, priorizando la eficiencia energética y el cumplimiento con los requerimientos de distribuidoras.",
+      text: "Diseñamos instalaciones <span>eléctricas</span> optimizadas para cada nivel <span>tarifario</span>, priorizando la eficiencia energética y el cumplimiento con los requerimientos de distribuidoras.",
       anchor: "",
     },
     // Ejemplos adicionales:
@@ -76,16 +76,19 @@ const Carousel = () => {
   };
 
   return (
+    <Body>
     <Padder>
       <CarouselWrapper bg={slides[current].image}>
 
       {/* <Overlay /> */}
         <TopOverlay />
         <MidOverlay />
+        {/* <BottomOverlay /> */}
 
         <Content>
           <Title dangerouslySetInnerHTML={{ __html: slides[current].title }} />
-          <Text>{slides[current].text}</Text>
+          <Text dangerouslySetInnerHTML={{ __html: slides[current].text }} />
+
         </Content>
 
         <a href="https://wa.me/2235111081?text=%20Estoy%20interesado%20en%20sus%20servicios" target="_blank" rel="noopener noreferrer">
@@ -109,10 +112,11 @@ const Carousel = () => {
 
       </CarouselWrapper>
     </Padder>
+    </Body>
   );
 };
 
-export default Carousel;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&display=swap');
@@ -123,13 +127,19 @@ const GlobalStyle = createGlobalStyle`
     
   }
 `;
+const Body = styled.body`
+  background: ${({ theme }) => theme.body};
+`
 
 const Padder = styled.div`
-  @media (min-width: 768px) {
-    padding: 0 10rem;
-    background: #0b0c1a;
+  @media ((1024px <= height <= 1366px) and (768px <= width <= 1280px)) {
+    padding: 0 5rem;
   }
-`
+  @media (min-width: 1280px) {
+    padding: 0 10rem;
+    background: ${({ theme }) => theme.body};
+  }
+`;
 
 
 const CarouselWrapper = styled.section`
@@ -140,16 +150,31 @@ const CarouselWrapper = styled.section`
   display: flex;
   color: #fff;
   transition: background 0.5s ease-in-out;
-  margin-top: -80px; /* Para que el Header esté sobre el Carousel */
+  margin-top: -80px; /* Por defecto */
   padding-top: 80px; 
-  z-index: 0;  
+  z-index: 0;
+
+  /* Media queries limpias */
   @media (min-width: 768px) {
     height: 75vh;
     font-size: 22px;
     margin-top: -90px;
     padding-top: 90px;
   }
+
+  @media (min-width: 1024px) {
+    height: 90vh;
+    font-size: 24px;
+  }
+
+  @media (max-height: 700px) {
+    height: 75vh; /* Ajusta según sea necesario */
+  }
+  @media (max-height: 600px) and (min-width: 1024px) {
+    height: 85vh;
+  }
 `;
+
 
 const TopOverlay = styled.div`
   position: absolute;
@@ -157,26 +182,19 @@ const TopOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 80px;
-  background: linear-gradient(to bottom, rgba(10,10,10,10), transparent);
+  background: ${({ theme }) => theme.topOverlay};
   pointer-events: none;
   z-index: 2;
 `;
-const Overlay = styled.div`
+const BottomOverlay = styled.div`
   position: absolute;
-  top: 0;
+  top: 93%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80px;
+  background: ${({ theme }) => theme.bottomOverlay};
   pointer-events: none;
   z-index: 2;
-
-  /* Degradado que oscurece bordes y deja el centro más visible */
-  background: radial-gradient(
-    circle at center,
-    rgba(0, 0, 0, 0) 60%,   /* centro transparente */
-    rgba(0, 0, 0, 0.8) 75%, /* bordes semi-oscuros */
-    rgba(0, 0, 0, 0.99) 100% /* esquinas más oscuras */
-  );
 `;
 
 const MidOverlay = styled.div`
@@ -185,7 +203,7 @@ const MidOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(360deg, #0b0c1a 10%, transparent 150%);
+  background: ${({ theme }) => theme.midOverlay};
   pointer-events: none;
   z-index: 1;
 `;
@@ -200,26 +218,18 @@ const Content = styled.div`
   @media (min-width: 768px) {
     padding: 4rem 0 0 9.3rem;
   }
-`;
-
-const Title = styled.h2`
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 1rem;
-
-  span {
-    color: #f2c300;
+  @media ((1024px <= height <= 1366px) and (768px <= width <= 1280px)) {
+    padding: 1rem 0 0 1rem;
   }
-`;
+  @media (max-height: 600px) and (min-width: 1024px) {
+    padding: 0 0 0 9.3rem;
+  }
+  
 
-const Text = styled.p`
-  font-size: 1em;
-  margin-bottom: 2rem;
 `;
-
 const Button = styled.button`
   position: absolute;
-  top: 65%;
+  top: 75%;
   left: 2rem;
   background-color: #f2c2001c;
   border: solid 4px #f2c300;
@@ -237,9 +247,32 @@ const Button = styled.button`
     color: #000;
   }
   @media (min-width: 768px) {
+    left: 1rem;
+  }
+  @media (min-width: 912px) {
     left: 9.3rem;
   }
 `;
+const Title = styled.h2`
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 0.001em;
+
+  span {
+    color: #f2c300;
+  }
+`;
+
+const Text = styled.p`
+  font-size: 1em;
+  margin-bottom: 2rem;
+  span {
+    color: #f2c300;
+  }
+`;
+
+
 
 // Sliders del Carousel
 const NavContainer = styled.div`
@@ -309,3 +342,5 @@ const PrevButton = styled(NavButton)`
 const NextButton = styled(NavButton)`
   right: 0;
 `;
+
+export default Carousel; Padder;

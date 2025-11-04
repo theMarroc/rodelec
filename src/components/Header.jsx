@@ -2,31 +2,33 @@ import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
+import { FaLightbulb } from "react-icons/fa";
+import { FaRegLightbulb } from "react-icons/fa";
 
 
-const Header = () => {
+const Header = ({ isDark, toggleTheme }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Manejar scroll para cambiar color de fondo
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <HeaderWrapper scrolled={scrolled} menuOpen={menuOpen}>
-
       <GlobalStyle />
+
       <Logo>
         R<img src="/logo-rodelec-alt.png" alt="logo" />D E L E C
       </Logo>
 
-      <SubHeader>Luis Rodriguez Mat. T-44676 - CTPBA</SubHeader>
+      <SubHeader>Luis Rodriguez Mat T-44676-CTPBA</SubHeader>
+
+   {/*<ThemeButton onClick={toggleTheme}>
+        {isDark ? <FaLightbulb size={20} /> : <FaRegLightbulb size={20} />}
+      </ThemeButton> */}
 
       <Hamburger onClick={() => setMenuOpen(!menuOpen)}>
         <span style={{ transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }}></span>
@@ -40,7 +42,7 @@ const Header = () => {
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           </li>
           <li>
-            <Link to="/Services " onClick={() => setMenuOpen(false)}>Servicios</Link>
+            <Link to="/Services" onClick={() => setMenuOpen(false)}>Servicios</Link>
           </li>
           <li>
             <a
@@ -49,7 +51,8 @@ const Header = () => {
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
             >
-              Whatsapp
+              <WhatsappText>Whatsapp</WhatsappText>
+
             </a>
           </li>
         </ul>
@@ -60,25 +63,18 @@ const Header = () => {
 
 export default Header;
 
+// ---------- ESTILOS ----------
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&display=swap');
-
   body {
     margin: 0;
     font-family: 'Oswald', sans-serif;
   }
 `;
 
-// Animación de apertura del menú
 const slideDown = keyframes`
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 `;
 
 const HeaderWrapper = styled.header`
@@ -89,48 +85,104 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ scrolled, menuOpen }) => (scrolled || menuOpen ? "#0b0c1a" : "transparent")};
+  background: ${({ scrolled, menuOpen, theme }) =>
+    (scrolled || menuOpen ? theme.body : "transparent")};
+
+  color: ${({ theme }) => theme.text};
   transition: background-color 0.3s ease;
 
   @media (min-width: 768px) {
-
     font-size: 28px;
-
   }
 `;
 
 const Logo = styled.div`
+  text-shadow: ${({ theme }) => theme.shadow};
   display: flex;
   align-items: center;
   font-size: 1.4em;
-  color: #fff;
+  color: ${({ theme }) => theme.text};
   font-weight: bold;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.15em;
 
   img {
     height: 40px;
-     @media (min-width: 768px) {
+    @media (min-width: 768px) {
       height: 58px;
       padding-right: 6px;
-  }
-
+    }
   }
 `;
+
 const SubHeader = styled.p`
   position: absolute;
   top: 52%;
   left: 2rem;
   font-size: 0.77em;
-  color: #f2c300;
+  font-weight: bold;
+  color: ${({ theme }) => theme.border};
+
   @media (min-width: 768px) {
-
     font-size: 0.69em;
-
+    letter-spacing: 0.0007em;
   }
 `;
 
+const ThemeButton = styled.button`
+
+  position: absolute;
+  right: 60px;
+  top: 25.3px;
+  background: transparent;
+  color: ${({ theme }) => theme.blackAndWhite};
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (min-width: 768px) {
+    top: 37.3px;
+    right: 10px;
+  }
+  @media ((1024px <= height <= 1366px) and (768px <= width <= 1280px)) {
+    top: 37.3px;
+    right: 60px;
+  }
+`;
+const Hamburger = styled.div`
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1100;
+   @media ((1024px <= height <= 1366px) and (768px <= width <= 1280px)) {
+    top: 38.3px;
+    right: 20px;
+  }
+
+  span {
+    height: 3px;
+    width: 25px;
+    background: ${({ theme }) => theme.blackAndWhite};
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
+
 const Nav = styled.nav`
   ul {
+    text-shadow: ${({ theme }) => theme.shadow};
     list-style: none;
     display: flex;
     gap: 1.5rem;
@@ -144,7 +196,8 @@ const Nav = styled.nav`
       top: 70px;
       left: 0;
       width: 100%;
-      background-color: #0b0c1a;
+      background: ${({ theme }) => theme.body};
+      border-top: solid 1px ${({ theme }) => theme.headerBorder};
       padding: 1rem 2rem;
       display: ${({ open }) => (open ? "flex" : "none")};
       animation: ${slideDown} 0.3s ease forwards;
@@ -152,47 +205,26 @@ const Nav = styled.nav`
     }
   }
 
-  li {
-    a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      transition: 0.3s;
-      padding: 0.5rem 1rem;
-      display: block;
+  li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 0.5rem 1rem;
+    display: block;
 
-      &:hover {
-        color: #f2c300;
-      }
+    &:hover {
+      color: #f2c300;
     }
+  }
 
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
+    li {
       width: 50%;
       padding: 0.5rem 0;
     }
   }
 `;
-
-const Hamburger = styled.div`
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1100;
-
-  span {
-    height: 3px;
-    width: 25px;
-    background: #fff;
-    margin-bottom: 5px;
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
+const WhatsappText = styled.span`
+  color: ${({ theme }) => theme.whatsapp};
 `;
-

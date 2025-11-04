@@ -13,7 +13,7 @@ const FooterForm = () => {
     setStatusMessage('');
 
     const form = formRef.current;
-    const requiredFields = ['nombre', 'email', 'telefono', 'empresa', 'provincia', 'ciudad'];
+    const requiredFields = ['nombre', 'email', 'telefono', 'mensaje', 'provincia', 'ciudad'];
     let allValid = true;
 
     requiredFields.forEach((fieldId) => {
@@ -52,9 +52,11 @@ const FooterForm = () => {
 
   return (
     <FooterContainer>
+      {/* <TopOverlay /> */}
       <BackgroundOverlay />
 
       <ContentWrapper>
+        {/* <Padder> */}
         <ContactSection>
           <Title>Contacto</Title>
           <Subtitle>Contáctanos y un asesor se comunicará contigo.</Subtitle>
@@ -80,8 +82,8 @@ const FooterForm = () => {
 
             <FormRow>
               <FormControl className="full-width">
-                <Label htmlFor="empresa">Empresa *</Label>
-                <Input type="text" id="empresa" name="empresa" required />
+                <Label htmlFor="empresa">Empresa</Label>
+                <Input type="text" id="empresa" name="empresa" />
               </FormControl>
             </FormRow>
 
@@ -135,7 +137,7 @@ const FooterForm = () => {
 
             <FormRow>
               <FormControl className="full-width">
-                <Label htmlFor="mensaje">Mensaje</Label>
+                <Label htmlFor="mensaje">Mensaje*</Label>
                 <Textarea id="mensaje" name="mensaje" rows="5" />
               </FormControl>
             </FormRow>
@@ -176,6 +178,7 @@ const FooterForm = () => {
             <SocialIconLink href="#" target="_blank"><FiInstagram size={20} /></SocialIconLink>
           </SocialIcons>
         </SalesSection>
+        {/* </Padder> */}
       </ContentWrapper>
     </FooterContainer>
   );
@@ -202,25 +205,13 @@ const backgroundAnimation = keyframes`
   from { transform: rotate(0deg) scale(1); }
   to { transform: rotate(360deg) scale(1.05); }
 `;
-
-const FooterContainer = styled.footer`
-  position: relative;
-  background-color: ${COLORS.primaryBg};
-  color: ${COLORS.text};
-  padding: 0 0 20px 0;
-  overflow-x: hidden; 
-  overflow-y: hidden;
-`;
-
-
-
 const BackgroundOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* importante para que no interfiera con scroll */
+  pointer-events: none;
   opacity: 0.1;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23FFFFFF" d="M100 0L0 100V0z" opacity="0.1"/></svg>');
   background-size: 200px 200px;
@@ -229,6 +220,27 @@ const BackgroundOverlay = styled.div`
   z-index: 0;
   overflow: hidden;
 `;
+
+const FooterContainer = styled.footer`
+  position: relative;
+  background-color: ${({ theme }) => theme.body};
+  color: ${COLORS.text};
+  padding: 0 0 20px 0;
+  overflow-x: hidden; 
+  overflow-y: hidden;
+`;
+
+const TopOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(180deg, #111 10%, transparent 150%);
+  pointer-events: none;
+  z-index: 2;
+`
+
 
 
 const ContentWrapper = styled.div`
@@ -240,7 +252,7 @@ const ContentWrapper = styled.div`
   gap: 40px;
   z-index: 1;
   box-sizing: border-box;
-  flex-wrap: wrap; /* evita overflow horizontal en móviles */
+  flex-wrap: wrap;
 
   @media (max-width: 992px) {
     flex-direction: column;
@@ -249,9 +261,7 @@ const ContentWrapper = styled.div`
   @media (max-width: 576px) {
     padding: 0 15px;
   }
-  @media (min-width: 768px) {
-    padding: 5rem 10rem;
-  }
+
 `;
 
 

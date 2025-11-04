@@ -90,6 +90,7 @@ const Services = () => {
 
   return (
     <Wrapper>
+      {/* <BottomOverlay /> */}
       <Header>
         <h3>Nuestros servicios</h3>
         <Nav>
@@ -136,19 +137,33 @@ export default Services;
 
 /* -------------------- Styled Components -------------------- */
 const Wrapper = styled.section`
-  background: #0b0c1a;
-  color: #fff;
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
   padding: 0rem 2rem 2rem 2rem;
   margin: auto;
-  font-size: 0.9em; /* tamaño base para móvil */
+  font-size: 0.9em; 
 
-  margin-top: -90px; /* Para que el Header esté sobre el Carousel */
+  margin-top: -90px; 
   padding-top: 90px; 
 
   @media (min-width: 768px) {
     padding: 5rem 10rem;
-    font-size: 24px; /* tamaño base para desktop */
+    font-size: 24px;
   }
+  @media ((1024px <= height <= 1366px) and (768px <= width <= 1280px)) {
+    padding: 5rem 5rem;
+  }
+`;
+
+const BottomOverlay = styled.div`
+  position: absolute;
+  bottom: -78%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(360deg, #111 10%, transparent 150%);
+  pointer-events: none;
+  z-index: 2;
 `;
 
 const Header = styled.div`
@@ -253,21 +268,21 @@ const Image = styled.img`
 
 
 const Category = styled.p`
-  color: #aaa;
+  color: ${({ theme }) => theme.greyAndBlack};
   text-transform: uppercase;
-  font-size: 0.8em; /* relativo a Wrapper */
+  font-size: 0.8em; 
   margin-bottom: 0.5em;
 `;
 
 const Title = styled.h2`
-  font-size: 1.3em; /* relativo a Wrapper */
-  color: #fff;
+  font-size: 1.3em;
+  color: ${({ theme }) => theme.blackAndWhite};
   margin-bottom: 0.8em;
 `;
 
 const Desc = styled.p`
-  font-size: 0.9em; /* relativo a Wrapper */
-  color: #ccc;
+  font-size: 0.9em;
+  color: ${({ theme }) => theme.greyAndBlack};
   margin-bottom: 1.5em;
 `;
 
@@ -277,7 +292,7 @@ const Anchor = styled.a`
 
 const Button = styled.button`
   background: transparent;
-  border: 2px solid #f2c300;
+  border: 3px solid #f2c300;
   color: #fff;
   padding: 0.6rem 1.2rem;
   font-size: 0.9em;
@@ -289,7 +304,7 @@ const Button = styled.button`
   font-weight: bold;
 
   &::after {
-    content: "➜";
+    content: "Técnico";
     margin-left: 0.5rem;
     color: #f2c300;
   }

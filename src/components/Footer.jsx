@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const FooterWrapper = styled.header`
-  background-color: #0b0c1a;
+const FooterWrapper = styled.footer`
+  background: ${({ theme }) => theme.body};
   padding: 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  color: #fff;
+  color: ${({ theme }) => theme.text};
   font-weight: bold;
   justify-content: center;
   gap: 0.5rem;
@@ -38,7 +38,7 @@ const Text = styled.p`
 const Span = styled.span`
   display: flex;
   align-items: center; 
-  color: #4420c5;
+  color: ${({ theme }) => theme.text};
   gap: 0.3rem;
 
   img {
@@ -55,7 +55,7 @@ const Footer = () => {
       <Logo>
         {/* <Text>Derechos reservados:</Text> */}
         <Span>
-          R<img src="/logo-rodelec.png" alt="logo" />O D E L E C
+          R<img src="/logo-rodelec-alt.png" alt="logo" />O D E L E C
         </Span>
       </Logo>
     </FooterWrapper>
