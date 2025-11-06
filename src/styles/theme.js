@@ -1,4 +1,4 @@
-export const darkTheme = {
+export const lightTheme = {
   body: '#0b0c1a',
   text: '#fff',
   subText: '#f2c300',
@@ -16,7 +16,7 @@ export const darkTheme = {
   topOverlay: 'linear-gradient(to bottom, rgba(10,10,10,10), transparent)',
   bottomOverlay: 'linear-gradient(360deg, #0b0c1a 10%, transparent 150%)',
 }
-export const lightTheme = {
+export const darkTheme = {
   body: 'linear-gradient(90deg, #0f8bf0, #3aa0f2, #66b5f5)',
   text: '#fff',
   subText: '#010101',
@@ -31,7 +31,7 @@ export const lightTheme = {
   headerBorder: '#000',
   blackAndWhite: '#000',
   greyAndBlack: '#222',
-  midOverlay: 'none',
+  midOverlay: 'linear-gradient(360deg, #0b0c1a3a 10%, transparent 150%)',
   topOverlay: 'linear-gradient(to bottom, rgba(10,10,10,10), transparent)',
   bottomOverlay: 'linear-gradient(360deg, transparent 10%, transparent 150%)',
 }

@@ -296,7 +296,7 @@ const Title = styled.h2`
 
 const Subtitle = styled.p`
   font-size: 1rem;
-  color: ${COLORS.label};
+  color: ${({ theme }) => theme.greyAndBlack};
   margin-bottom: 25px;
 
   @media (max-width: 576px) {
