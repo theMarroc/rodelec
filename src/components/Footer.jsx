@@ -23,7 +23,7 @@ const FooterWrapper = styled.footer`
 const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   color: ${({ theme }) => theme.text};
   font-weight: bold;
   justify-content: center;
@@ -42,7 +42,9 @@ const Span = styled.span`
   gap: 0.3rem;
 
   img {
-    height: 40px;
+    filter: drop-shadow(0 0 3px grey)
+            drop-shadow(0 0 6px grey);
+    height: 45px;
     width: auto;
     vertical-align: middle;
   }
@@ -55,7 +57,7 @@ const Footer = () => {
       <Logo>
         {/* <Text>Derechos reservados:</Text> */}
         <Span>
-          R<img src="/logo-rodelec-alt.png" alt="logo" />O D E L E C
+          R<img src="/logo-rodelec.png" alt="logo" />O D E L E C
         </Span>
       </Logo>
     </FooterWrapper>

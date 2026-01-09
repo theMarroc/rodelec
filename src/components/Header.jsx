@@ -21,12 +21,12 @@ const Header = ({ isDark, toggleTheme }) => {
       <GlobalStyle />
 
       <Logo>
-        R<img src="/logo-rodelec-alt.png" alt="logo" />D E L E C
+        R<img src="/logo-rodelec.png" alt="logo" />D E L E C
       </Logo>
 
       <SubHeader>Luis Rodriguez Mat T-44676-CTPBA</SubHeader>
 
-   {/* <ThemeButton onClick={toggleTheme}>
+      {/* <ThemeButton onClick={toggleTheme}>
         {isDark ? <FaLightbulb size={20} /> : <FaRegLightbulb size={20} />}
       </ThemeButton> */}
 
@@ -40,6 +40,9 @@ const Header = ({ isDark, toggleTheme }) => {
         <ul>
           <li>
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          </li>
+          <li>
+            <Link to="/Staff" onClick={() => setMenuOpen(false)}>Staff</Link>
           </li>
           <li>
             <Link to="/Services" onClick={() => setMenuOpen(false)}>Servicios</Link>
@@ -104,9 +107,14 @@ const Logo = styled.div`
   color: ${({ theme }) => theme.text};
   font-weight: bold;
   letter-spacing: 0.15em;
+  @media (max-width: 768px) {
+    letter-spacing: 0.22em;
+  }
 
   img {
     height: 40px;
+    filter: drop-shadow(0 0 3px grey)
+            drop-shadow(0 0 6px grey);
     @media (min-width: 768px) {
       height: 58px;
       padding-right: 6px;
@@ -121,6 +129,7 @@ const SubHeader = styled.p`
   font-size: 0.77em;
   font-weight: bold;
   color: ${({ theme }) => theme.border};
+
 
   @media (min-width: 768px) {
     font-size: 0.69em;

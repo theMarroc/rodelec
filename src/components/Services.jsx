@@ -1,6 +1,7 @@
 // Services.jsx
 import React, { useState } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
+import FooterForm from "./FooterForm";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200..700&display=swap');
@@ -89,47 +90,49 @@ const Services = () => {
   };
 
   return (
-    <Wrapper>
-      {/* <BottomOverlay /> */}
-      <Header>
-        <h3>Nuestros servicios</h3>
-        <Nav>
-          <Arrow onClick={prevSlide}>{"<"}</Arrow>
-          <Arrow onClick={nextSlide}>{">"}</Arrow>
-        </Nav>
-      </Header>
+    <div>
+      <Wrapper>
+        {/* <BottomOverlay /> */}
+        <Header>
+          <h3>Nuestros servicios</h3>
+          <Nav>
+            <Arrow onClick={prevSlide}>{"<"}</Arrow>
+            <Arrow onClick={nextSlide}>{">"}</Arrow>
+          </Nav>
+        </Header>
 
-      <Progress>
-        {servicesData.map((_, index) => (
-          <Step
-            key={index}
-            active={index === current}
-            onClick={() => setCurrent(index)}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </Step>
-        ))}
-      </Progress>
+        <Progress>
+          {servicesData.map((_, index) => (
+            <Step
+              key={index}
+              active={index === current}
+              onClick={() => setCurrent(index)}
+            >
+              {String(index + 1).padStart(2, "0")}
+            </Step>
+          ))}
+        </Progress>
 
 
-      <Content>
-        <TextWrapper>
-          <Category>{servicesData[current].category}</Category>
-          <Title>{servicesData[current].title}</Title>
-          <Desc>{servicesData[current].description}</Desc>
-          <Anchor
-            href={servicesData[current].link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button>Contactar</Button>
-          </Anchor>
-        </TextWrapper>
+        <Content>
+          <TextWrapper>
+            <Category>{servicesData[current].category}</Category>
+            <Title>{servicesData[current].title}</Title>
+            <Desc>{servicesData[current].description}</Desc>
+            <Anchor
+              href={servicesData[current].link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button>Contactar</Button>
+            </Anchor>
+          </TextWrapper>
 
-        <Image src={servicesData[current].image} alt={servicesData[current].title} />
-      </Content>
-
-    </Wrapper>
+          <Image src={servicesData[current].image} alt={servicesData[current].title} />
+        </Content>
+      </Wrapper>
+      <FooterForm />
+    </div >
   );
 };
 

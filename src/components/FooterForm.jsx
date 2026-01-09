@@ -58,7 +58,7 @@ const FooterForm = () => {
       <ContentWrapper>
         {/* <Padder> */}
         <ContactSection>
-          <Title>Contacto</Title>
+          <Title>Contacto vía Email</Title>
           <Subtitle>Contáctanos y un asesor se comunicará contigo.</Subtitle>
 
           <Form ref={formRef} onSubmit={sendEmail}>

@@ -10,6 +10,8 @@ import Carousel from "./components/Carousel";
 import Services from "./components/Services";
 import FooterForm from "./components/FooterForm";
 import Footer from "./components/Footer";
+import Slider from "./components/Slider";
+import Staff from "./components/Staff";
 
 const backgroundAnimation = keyframes`
   from { transform: rotate(0deg) scale(1); }
@@ -59,14 +61,15 @@ function App() {
             element={
               <>
                 <Carousel />
+                {/* <Slider /> */}
                 <Services />
               </>
             }
           />
           <Route path="/services" element={<Services />} />
+          <Route path="/staff" element={<Staff />} />
         </Routes>
 
-        <FooterForm />
         <Footer />
       </BrowserRouter>
     </ThemeProvider>

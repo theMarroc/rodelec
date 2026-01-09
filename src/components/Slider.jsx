@@ -42,7 +42,7 @@ const Logo = styled.div`
   user-select: none;
 `;
 
-const InfiniteCarousel = () => {
+const Slider = () => {
   const logos = ["Sponsor 1", "Sponsor 2", "Sponsor 3", "Sponsor 4", "Sponsor 5", "Sponsor 6", "Sponsor 7", "Sponsor 8", "Sponsor 9", "Sponsor 10"];
 
   return (
@@ -57,4 +57,4 @@ const InfiniteCarousel = () => {
   );
 };
 
-export default InfiniteCarousel;
+export default Slider;
