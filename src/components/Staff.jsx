@@ -3,27 +3,28 @@ import styled from "styled-components";
 import { FaWhatsapp, FaPhone, FaUserTie } from "react-icons/fa";
 
 const message = encodeURIComponent(
-    "Me contacto desde RODELEC.com para una consulta personalizada."
+  "Me contacto desde RODELEC.com para una consulta personalizada."
 );
 const staffData = [
-    {
-        id: "luis",
-        isLead: true,
-        name: (
-            <>
-                Luis R<span style={{ color: "#0d73c5" }}>o</span>driguez
-            </>
-        ), role: "Técnico Electromecánico", role2: (
-            <>
-                CEO de R<span style={{ color: "#0d73c5", fontWeight: "bolder" }}>O</span>DELEC
-            </>
-        ), phone: "+54 9 223 511-1081", whatsapp: `2235111081`
-    },
-    { name: "Tomás Scalzo", role: "Técnico Electricista", role2: "Instalador de aires acondicionados", phone: "+54 9 2291 51-7486", whatsapp: `2291517486` },
-    { name: "Gastón Ferreira", role: "Técnico Electricista", role2: "Supervisor de Obra", phone: "+54 9 2291 41-0530", whatsapp: `2291410530` },
-    { name: "Mariano Gavilán", role: "Técnico Electricista", role2: "Mantenimiento General", phone: "+54 9 223 622-0217", whatsapp: `2236220217` },
-    { name: "Esteban Leal", role: "Técnico Electricista", role2: "Carpintería General", phone: "+54 9 2291 40-2501", whatsapp: `2291402501` }
-    // ,{ name: "Marco Scalzo", role: "Técnico Especialista", phone: "+54 9 2291 51-2866", whatsapp: `2291512866` },
+  {
+    id: "luis",
+    isLead: true,
+    name: (
+      <>
+        Luis R<span style={{ color: "#0d73c5" }}>o</span>driguez
+      </>
+    ), role: "Técnico Electromecánico", role2: (
+      <>
+        Matrícula T-44676-CTPBA<span style={{ color: "#0d73c5", fontWeight: "bolder" }}></span>
+      </>
+    ), phone: "+54 9 223 511-1081", whatsapp: `2235111081`
+  },
+  { name: "Tomás Scalzo", role: "Electricista Certificado", role2: "Instalador de aires acondicionados", phone: "+54 9 2291 51-7486", whatsapp: `2291517486` },
+  { name: "Gastón Ferreira", role: "Electricista Certificado", role2: "Jefe de Obra", phone: "+54 9 2291 41-0530", whatsapp: `2291410530` },
+  { name: "Mariano Gavilán", role: "Electricista Certificado", role2: "Mantenimiento de Instalación", phone: "+54 9 223 622-0217", whatsapp: `2236220217` },
+  { name: "Esteban Leal", role: "Electricista Certificado", role2: "", phone: "+54 9 2291 40-2501", whatsapp: `2291402501` },
+  { name: "Daniel Aliatta", role: "Auxiliar de Instalación", role2: "", phone: "+54 9 11 2454-3107", whatsapp: `1124543107` },
+  // ,{ name: "Marco Scalzo", role: "Técnico Especialista", phone: "+54 9 2291 51-2866", whatsapp: `2291512866` },
 ];
 
 const StaffSection = styled.section`
@@ -152,57 +153,57 @@ const WhatsAppButton = styled.a`
 `;
 
 const shuffleExceptLead = (array) => {
-    const lead = array.find(item => item.isLead);
-    const rest = array.filter(item => !item.isLead);
+  const lead = array.find(item => item.isLead);
+  const rest = array.filter(item => !item.isLead);
 
-    for (let i = rest.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [rest[i], rest[j]] = [rest[j], rest[i]];
-    }
+  for (let i = rest.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [rest[i], rest[j]] = [rest[j], rest[i]];
+  }
 
-    return lead ? [lead, ...rest] : rest;
+  return lead ? [lead, ...rest] : rest;
 };
 
 
 const Staff = () => {
 
-    const [OrderedStaff, setOrderedStaff] = useState([]);
+  const [OrderedStaff, setOrderedStaff] = useState([]);
 
-    useEffect(() => {
-        setOrderedStaff(shuffleExceptLead(staffData));
-    }, []);
+  useEffect(() => {
+    setOrderedStaff(shuffleExceptLead(staffData));
+  }, []);
 
-    return (
-        <StaffSection id="staff">
-            <Title>Staff Técnico</Title>
-            <Grid>
-                {OrderedStaff.map((staff) => (
-                    <UserCard key={staff.name}>
-                        <Avatar>
-                            <FaUserTie />
-                        </Avatar>
-                        <Name>{staff.name}</Name>
-                        <Role>{staff.role}</Role>
-                        <Role2>{staff.role2}</Role2>
+  return (
+    <StaffSection id="staff">
+      <Title>Staff Técnico</Title>
+      <Grid>
+        {OrderedStaff.map((staff) => (
+          <UserCard key={staff.name}>
+            <Avatar>
+              <FaUserTie />
+            </Avatar>
+            <Name>{staff.name}</Name>
+            <Role>{staff.role}</Role>
+            <Role2>{staff.role2}</Role2>
 
-                        <InfoRow>
-                            <FaPhone size={14} />
-                            <span>{staff.phone}</span>
-                        </InfoRow>
+            <InfoRow>
+              <FaPhone size={14} />
+              <span>{staff.phone}</span>
+            </InfoRow>
 
-                        <WhatsAppButton
-                            href={`https://wa.me/${staff.whatsapp}?text=${message}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FaWhatsapp size={20} />
-                            Contactar
-                        </WhatsAppButton>
-                    </UserCard>
-                ))}
-            </Grid>
-        </StaffSection>
-    );
+            <WhatsAppButton
+              href={`https://wa.me/${staff.whatsapp}?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaWhatsapp size={20} />
+              Contactar
+            </WhatsAppButton>
+          </UserCard>
+        ))}
+      </Grid>
+    </StaffSection>
+  );
 };
 
 export default Staff;
