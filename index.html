@@ -1,10 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo-rodelec.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rodelec</title>
+
+    <title>Rodelec | Servicios eléctricos trifásicos en Miramar y Mar del Plata</title>
+    <meta
+      name="description"
+      content="Instalaciones eléctricas trifásicas, mediciones de puesta a tierra, Resolución SRT 900/15 e informes para habilitaciones comerciales. Técnico matriculado T-44676-CTPBA."
+    />
+    <link rel="canonical" href="https://www.rodelec.com/" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)" />
+
+    <!-- Open Graph: así se ve el link cuando lo comparten por WhatsApp. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Rodelec" />
+    <meta property="og:title" content="Rodelec | Servicios eléctricos trifásicos" />
+    <meta
+      property="og:description"
+      content="Instalaciones, mediciones e informes eléctricos con técnico matriculado. Miramar y Mar del Plata."
+    />
+    <meta property="og:url" content="https://www.rodelec.com/" />
+    <meta property="og:image" content="https://www.rodelec.com/og-rodelec.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- La fuente se carga acá y no con @import dentro del CSS: un @import
+         obliga al navegador a bajar y parsear el CSS antes de pedir la fuente. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+    />
+
+    <script>
+      // Pinta el fondo correcto antes de que React monte, si no se ve un
+      // flash blanco al entrar en modo oscuro. Debe seguir la misma
+      // prioridad que src/hooks/useColorScheme.js.
+      (function () {
+        try {
+          var guardado = localStorage.getItem('rodelec-theme');
+          var modo =
+            guardado === 'dark' || guardado === 'light'
+              ? guardado
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.dataset.theme = modo;
+          document.documentElement.style.colorScheme = modo;
+          document.documentElement.style.backgroundColor =
+            modo === 'light' ? '#f7f8fa' : '#0b0c1a';
+        } catch (e) {
+          document.documentElement.style.backgroundColor = '#0b0c1a';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
