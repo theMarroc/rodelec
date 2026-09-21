@@ -1,3 +1,0 @@
-# SPA fallback: sin esto, entrar directo a /staff o recargar la página
-# devuelve 404 en cualquier hosting estático (Cloudflare Pages, Netlify).
-/*    /index.html   200
