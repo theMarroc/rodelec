@@ -1,0 +1,5 @@
+# SPA fallback para Cloudflare Pages: sin esto, entrar directo a /staff o
+# recargar la página devuelve 404.
+# Nota: esta sintaxis es de Pages. Un Worker con static assets la rechaza
+# (error 100324) y usa assets.not_found_handling en su lugar.
+/*    /index.html   200
